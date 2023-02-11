@@ -14,7 +14,7 @@ body{
     fill: transparent;
 }
 .ultra-light-green{
-    fill: #dbffdb;
+    fill: #dcffdb;
 }
 .light-green{
     fill: rgb(153, 215, 153);
@@ -23,14 +23,17 @@ body{
     fill: rgb(110, 210, 110);
 }
 .green-2{
-    fill: rgb(67, 154, 67);
+    fill: rgb(81, 178, 81);
 }
 .darker-green{
-    fill: rgb(30, 137, 30);
+    fill: rgb(34, 158, 34);
 }
 .darker-green-2{
-    fill: rgb(23, 99, 23);
+    fill: rgb(30, 128, 30);
 }
 .dark-green{
     fill: rgb(13, 92, 13);
+}
+.domain{
+    stroke:none;
 }

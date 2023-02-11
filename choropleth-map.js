@@ -8,7 +8,6 @@ const info = d3.json("https://cdn.freecodecamp.org/testable-projects-fcc/data/ch
 Promise.all([coordinates, info]).then(values => createMap(values));
 
 function createMap(values){
-  console.log(values[0])
     const svg = d3.select(".panel")
       .append("svg")
       .attr("width", width)
@@ -19,8 +18,6 @@ function createMap(values){
     const path = d3.geoPath();
 
     const counties = topojson.feature(values[0], values[0].objects.counties);
-
-    console.log(values[1])
 
     map.selectAll(".county")
        .data(counties.features)
@@ -38,6 +35,32 @@ function createMap(values){
        .append("path")
        .attr("class", "state")
        .attr("d", path);
+
+    const xScale = d3.scaleLinear()
+                     .domain([0.03, 0.66])
+                     .range([width-margins.right*9, width - margins.right * 3]);
+
+    const xAxis = d3.axisBottom(xScale).tickValues([0.03,0.12,0.21,0.30,0.39,0.48,0.57,0.66]).tickFormat(d3.format("~%")).tickSize(12);
+
+
+    const legend = svg.append("g")
+       .attr("id", "legend")
+       .attr("transform", `translate(0, ${margins.top})`)
+       .call(xAxis);
+
+    generateLegend(legend);
+}
+
+function generateLegend(legend){
+  const colours = ["ultra-light-green", "light-green", "green", "green-2", "darker-green", "darker-green-2", "dark-green"];
+  for(let i = 0; i < colours.length; ++i){
+    legend.append("rect")
+       .attr("width", 33.15)
+       .attr("height", 7)
+       .attr("y", 0)
+       .attr("x", width - margins.right * 8.9865+ i * 34.29)
+       .attr("class", `colour ${colours[i]}`);
+  }
 }
 
 function assignColor(x){
