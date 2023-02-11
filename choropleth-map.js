@@ -8,6 +8,7 @@ const info = d3.json("https://cdn.freecodecamp.org/testable-projects-fcc/data/ch
 Promise.all([coordinates, info]).then(values => createMap(values));
 
 function createMap(values){
+  values[1].sort((a,b) => a.fips - b.fips);
     const svg = d3.select(".panel")
       .append("svg")
       .attr("width", width)
@@ -24,8 +25,8 @@ function createMap(values){
        .enter()
        .append("path")
        .attr("data-fips", d => d.id)
-       .attr("data-education", d => binarySearch(values[1], d.id))
-       .attr("class", d=> `county ${assignColor(binarySearch(values[1], d.id))}`)
+       .attr("data-education", d => values[1][binarySearch(values[1], d.id)].bachelorsOrHigher)
+       .attr("class", d=> `county ${assignColor(values[1][binarySearch(values[1], d.id)].bachelorsOrHigher)}`)
        .attr("d", path);
 
     const states = topojson.feature(values[0], values[0].objects.states);
@@ -88,10 +89,11 @@ function assignColor(x){
 }
 
 function binarySearch(data, id){
-  let start = 0, end = data.length - 1;
+  let start = 0, end = data.length;
+  let index;
   while(start <= end){
-    let index = Math.floor((start + end)/2);
-    if(data[index].fips === id) return data[index].bachelorsOrHigher;
+    index = Math.floor((start + end)/2);
+    if(data[index].fips === id) return index;
     if(data[index].fips > id) end = index - 1;
     else start = index + 1;
   }
