@@ -12,6 +12,7 @@ body{
 .state{
     stroke: white;
     fill: transparent;
+    pointer-events: none;
 }
 .ultra-light-green{
     fill: #dcffdb;
@@ -36,4 +37,15 @@ body{
 }
 .domain{
     stroke:none;
+}
+#tooltip{
+    position: absolute;
+    pointer-events: none;
+    text-align: center;
+}
+.invisible{
+    opacity: 0;
+}
+.visible{
+    opacity: 1;
 }
