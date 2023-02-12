@@ -50,6 +50,7 @@ function createMap(values){
        .call(xAxis);
 
     generateLegend(legend);
+    makeTooltip(values[1]);
 }
 
 function generateLegend(legend){
@@ -61,6 +62,27 @@ function generateLegend(legend){
        .attr("y", 0)
        .attr("x", width - margins.right * 8.9865+ i * 34.29)
        .attr("class", `colour ${colours[i]}`);
+  }
+}
+
+function makeTooltip(data){
+  const paths = document.getElementsByClassName("county");
+  console.log(data);
+  for(let path of paths){
+    path.addEventListener("mouseover", () => {
+      const rect = path.getBoundingClientRect();
+      const index = binarySearch(data, parseInt(path.attributes.getNamedItem("data-fips").value));
+      document.getElementById("info").textContent = data[index].area_name + ", " + data[index].state + ": " + path.attributes.getNamedItem("data-education").value + "%";
+      document.getElementById("tooltip").style.top = rect.top - 30 + "px";
+      document.getElementById("tooltip").style.left = rect.right + "px";
+      document.getElementById("tooltip").setAttribute("data-education", path.attributes.getNamedItem("data-education").value);
+      document.getElementById("tooltip").classList.remove("invisible");
+      document.getElementById("tooltip").classList.add("visible");
+    });
+    path.addEventListener("mouseleave", () => {
+      document.getElementById("tooltip").classList.remove("visible");
+      document.getElementById("tooltip").classList.add("invisible");
+    });
   }
 }
 

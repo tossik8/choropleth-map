@@ -42,6 +42,10 @@ body{
     position: absolute;
     pointer-events: none;
     text-align: center;
+    background-color: rgba(252, 245, 184, 0.758);
+    font-size: 0.85rem;
+    border-radius: 0.2rem;
+    padding: 0rem 0.5rem;
 }
 .invisible{
     opacity: 0;
