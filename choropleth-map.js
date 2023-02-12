@@ -5,6 +5,31 @@ const margins = {top: 40, right: 40, bottom: 40, left: 40};
 const coordinates = d3.json("https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/counties.json");
 const info = d3.json("https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/for_user_education.json");
 
+function adjustZoom(){
+  if(document.documentElement.clientWidth < 470){
+    document.body.style.zoom = "39%";
+  }
+  else if(document.documentElement.clientWidth < 580){
+    document.body.style.zoom = "50%";
+  }
+  else if(document.documentElement.clientWidth < 760){
+    document.body.style.zoom = "60%";
+  }
+  else if(document.documentElement.clientWidth < 960){
+    document.body.style.zoom = "80%";
+  }
+  else {
+    document.body.style.zoom = "100%";
+  }
+}
+
+window.onload = () => {
+  adjustZoom();
+}
+window.onresize = () => {
+  adjustZoom();
+}
+
 Promise.all([coordinates, info]).then(values => createMap(values));
 
 function createMap(values){
