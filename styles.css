@@ -5,6 +5,8 @@ body{
     margin: 0;
     display: flex;
     justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(180deg, rgb(133, 55, 55), rgb(40, 91, 53));
 }
 #title{
     font-size: 3rem;
@@ -18,11 +20,20 @@ body{
     top: 48rem;
     font-size: 1.2rem;
 }
+p, h1{
+    color: white;
+}
+text{
+    fill: white;
+}
+line{
+    stroke: white;
+}
 #source > a{
     text-decoration: none;
 }
 #source > a, #source > a:visited{
-    color: rgb(81, 153, 212);
+    color: rgb(122, 192, 249);
 }
 .panel{
     text-align: center;
@@ -64,6 +75,9 @@ body{
     font-size: 0.85rem;
     border-radius: 0.2rem;
     padding: 0rem 0.5rem;
+}
+#info{
+    color: black;
 }
 .invisible{
     opacity: 0;
