@@ -6,9 +6,7 @@ body{
     display: flex;
     justify-content: center;
     min-height: 100vh;
-    background: linear-gradient(180deg, rgb(133, 55, 55), rgb(40, 91, 53));
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: linear-gradient(90deg, rgb(133, 55, 55), rgb(40, 91, 53));
 }
 #title{
     font-size: 3rem;
@@ -37,8 +35,12 @@ line{
 #source > a, #source > a:visited{
     color: rgb(122, 192, 249);
 }
+main{
+    height: 100%;
+}
 .panel{
     text-align: center;
+    height: 100%;
 }
 .state{
     stroke: rgba(255, 255, 255, 0.397);
