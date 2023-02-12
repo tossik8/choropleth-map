@@ -6,11 +6,29 @@ body{
     display: flex;
     justify-content: center;
 }
+#title{
+    font-size: 3rem;
+}
+#description{
+    font-size: 1.2rem;
+}
+#source{
+    position: absolute;
+    left: 55%;
+    top: 48rem;
+    font-size: 1.2rem;
+}
+#source > a{
+    text-decoration: none;
+}
+#source > a, #source > a:visited{
+    color: rgb(81, 153, 212);
+}
 .panel{
     text-align: center;
 }
 .state{
-    stroke: white;
+    stroke: rgba(255, 255, 255, 0.397);
     fill: transparent;
     pointer-events: none;
 }
